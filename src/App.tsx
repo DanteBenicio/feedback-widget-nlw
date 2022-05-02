@@ -1,6 +1,7 @@
-export default function App() {
+import Widget from "./components/Widget";
 
+export default function App() {
   return(
-    <h1>Helloasdioj </h1>
+    <Widget />
   )
 }
