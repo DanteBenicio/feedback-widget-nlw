@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button {
+  @apply 
+    text-white 
+    rounded-lg 
+    text-center
+    bg-cyan-800
+    transition-colors
+    hover:bg-cyan-700
+    w-28
+    p-5
+}
