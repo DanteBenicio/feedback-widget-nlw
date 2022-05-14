@@ -20,5 +20,15 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'react/jsx-no-bind': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'import/no-absolute-path': 'off',
+    'default-param-last': 'off',
+    'arrow-parens': 'off',
+    'no-underscore-dangle': 'off',
   },
 };

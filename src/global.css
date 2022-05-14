@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-bgColor text-zinc-100
+}
+
 .button {
   @apply 
     text-white 

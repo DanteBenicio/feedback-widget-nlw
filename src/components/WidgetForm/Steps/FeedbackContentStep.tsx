@@ -1,15 +1,25 @@
-import { ArrowLeft, Camera } from 'phosphor-react';
-import React from 'react';
+import { ArrowLeft } from 'phosphor-react';
+import React, { FormEvent, useState } from 'react';
 import { FeedbackType, feedbackTypes } from '..';
+import ScreenshotButton from '../ScreenshotButton';
 
 interface FeedbackContentStepProps {
   feedbackType: FeedbackType
-  setFeedbackType: React.Dispatch<React.SetStateAction<FeedbackType | undefined>>
+  onFeedbackRestartRequested: () => void
+  onFeedbackSent: () => void
 }
 
 // eslint-disable-next-line max-len
-export default function FeedbackContentStep({ feedbackType, setFeedbackType }: FeedbackContentStepProps) {
+export default function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, onFeedbackSent }: FeedbackContentStepProps) {
+  const [screenshot, setScreenshot] = useState<string | null>(null);
   const feedbackTypeInfo = feedbackTypes[feedbackType];
+  const [comment, setComment] = useState<string | null>();
+
+  function handleSubmitFeedback(event: FormEvent) {
+    event.preventDefault();
+
+    onFeedbackSent();
+  }
 
   return (
     <>
@@ -17,7 +27,7 @@ export default function FeedbackContentStep({ feedbackType, setFeedbackType }: F
         <button
           type="button"
           className="absolute top-5 left-5 text-zinc-400 hover:text-zinc-100"
-          onClick={() => setFeedbackType(undefined)}
+          onClick={onFeedbackRestartRequested}
         >
           <ArrowLeft weight="bold" />
         </button>
@@ -28,18 +38,19 @@ export default function FeedbackContentStep({ feedbackType, setFeedbackType }: F
         </span>
       </header>
 
-      <form action="">
+      <form onSubmit={handleSubmitFeedback}>
         <textarea
-          placeholder="Conte com detalhes o que está acontecendo..."
-          className="min-w-[304px] w-full min-h-[112px] text-sm placeholder-zinc-400 text-zinc-100 border-zinc-600 border-[1px] bg-transparent rounded-md focus:border-brand-500 focus:ring-brand-500 focus:ring-1 resize-none focus:outline-none p-2 scrollbar scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin"
+          placeholder={'Conte com detalhes o que está \nacontecendo...'}
+          className="min-w-[304px] w-full min-h-[112px] text-sm placeholder-zinc-400 text-zinc-100 border-zinc-600 border-[1px] bg-transparent rounded-md focus:border-brand-500 focus:ring-brand-500 focus:ring-1 resize-none focus:outline-none p-2 scrollbar scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin placeholder:font-medium"
+          onChange={e => setComment(e.target.value)}
         />
         <footer className="flex justify-center items-center gap-2 mb-4">
-          <button type="button" className="w-12 bg-surface-secondary p-1 rounded-md hover:bg-zinc-700 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-zinc-900">
-            <Camera className="block mx-auto text-3xl" />
-          </button>
+          <ScreenshotButton screenshot={screenshot!} onScreenshotTook={setScreenshot} />
+
           <button
             type="submit"
-            className="p-2 bg-brand-500 rounded-md border-transparent text-center flex-1 font-medium transition-all hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-zinc-900"
+            disabled={comment?.length === 0}
+            className="p-2 bg-brand-500 rounded-md border-transparent text-center cursor-pointer flex-1 font-medium transition-all hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-zinc-900 disabled:opacity-50 disabled:hover:bg-brand-500 disabled:cursor-not-allowed"
           >
             Enviar feedback
           </button>
