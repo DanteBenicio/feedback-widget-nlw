@@ -1,7 +1,7 @@
-import React from 'react';
+interface FeedbackSuccessStepProps {
+  onResendFeedback: () => void
+}
 
-export default function FeedbackSuccessStep() {
-  return (
-    <div>FeedbackSuccessStep</div>
+export default function FeedbackSuccessStep({ onResendFeedback }: FeedbackSuccessStepProps) {
   );
 }
