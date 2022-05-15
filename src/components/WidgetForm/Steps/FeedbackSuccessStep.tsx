@@ -4,7 +4,6 @@ interface FeedbackSuccessStepProps {
 
 export default function FeedbackSuccessStep({ onResendFeedback }: FeedbackSuccessStepProps) {
   return (
-<<<<<<< HEAD
     <div className="flex flex-col items-center py-10 w-[304px]">
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M38 34C38 36.209 36.209 38 34 38H6C3.791 38 2 36.209 2 34V6C2 3.791 3.791 2 6 2H34C36.209 2 38 3.791 38 6V34Z" fill="#77B255" />
@@ -21,8 +20,5 @@ export default function FeedbackSuccessStep({ onResendFeedback }: FeedbackSucces
         Quero enviar outro
       </button>
     </div>
-=======
-export default function FeedbackSuccessStep({ onResendFeedback }: FeedbackSuccessStepProps) {
->>>>>>> 585268c6bfd90a19d8822065ce36ca8b25eab57c
   );
 }
