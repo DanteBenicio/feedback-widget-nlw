@@ -2,10 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import { routes } from './routes';
 
-const App = express();
+const app = express();
 
-App.get('/users', (req, res) => res.send('Hellow World'));
+app.use(cors());
+app.use(express.json());
+app.use(routes);
 
-App.listen(5000, () => {
+app.listen(5000, () => {
   console.log('Server is Running');
 });
