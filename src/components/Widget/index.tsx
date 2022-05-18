@@ -5,14 +5,13 @@ import WidgetForm from '../WidgetForm';
 import './styles.css';
 
 export default function Widget() {
-
   return (
     <Popover className="popover_container">
       <Popover.Panel>
         <WidgetForm />
       </Popover.Panel>
 
-      <Popover.Button 
+      <Popover.Button
         className="flex items-center justify-center bg-brand-500 rounded-full px-3 h-12 text-white group"
         >
         <ChatTeardropDots className='w-6 h-6'/>
