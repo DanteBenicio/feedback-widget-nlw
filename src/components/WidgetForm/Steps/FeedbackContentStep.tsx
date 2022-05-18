@@ -21,6 +21,15 @@ export default function FeedbackContentStep({ feedbackType, onFeedbackRestartReq
   async function handleSubmitFeedback(event: FormEvent) {
     event.preventDefault();
 
+    setIsSendingFeedback(true);
+
+    await api.post('/feedbacks', {
+      type: feedbackType,
+      comment,
+      screenshot,
+    });
+
+    setIsSendingFeedback(false);
     onFeedbackSent();
   }
 
