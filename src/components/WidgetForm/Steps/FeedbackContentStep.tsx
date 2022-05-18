@@ -1,5 +1,5 @@
 import { ArrowLeft } from 'phosphor-react';
-import React, { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { FeedbackType, feedbackTypes } from '..';
 import ScreenshotButton from '../ScreenshotButton';
 import { api } from '../../../lib/api';
