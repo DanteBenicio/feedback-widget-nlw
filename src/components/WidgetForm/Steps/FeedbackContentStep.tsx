@@ -15,7 +15,8 @@ interface FeedbackContentStepProps {
 export default function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, onFeedbackSent }: FeedbackContentStepProps) {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const feedbackTypeInfo = feedbackTypes[feedbackType];
-  const [comment, setComment] = useState<string | null>();
+  const [comment, setComment] = useState<string>('');
+  const [isSendingFeedback, setIsSendingFeedback] = useState(false);
 
   function handleSubmitFeedback(event: FormEvent) {
     event.preventDefault();
