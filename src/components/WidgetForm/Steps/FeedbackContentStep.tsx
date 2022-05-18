@@ -18,7 +18,7 @@ export default function FeedbackContentStep({ feedbackType, onFeedbackRestartReq
   const [comment, setComment] = useState<string>('');
   const [isSendingFeedback, setIsSendingFeedback] = useState(false);
 
-  function handleSubmitFeedback(event: FormEvent) {
+  async function handleSubmitFeedback(event: FormEvent) {
     event.preventDefault();
 
     onFeedbackSent();
