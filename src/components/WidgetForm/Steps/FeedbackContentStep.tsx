@@ -61,7 +61,7 @@ export default function FeedbackContentStep({ feedbackType, onFeedbackRestartReq
 
           <button
             type="submit"
-            disabled={comment?.length === 0}
+            disabled={comment?.length === 0 || isSendingFeedback}
             className="p-2 bg-brand-500 rounded-md border-transparent text-center cursor-pointer flex-1 font-medium transition-all hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-zinc-900 disabled:opacity-50 disabled:hover:bg-brand-500 disabled:cursor-not-allowed"
           >
             Enviar feedback
